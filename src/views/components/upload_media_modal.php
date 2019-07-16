@@ -10,19 +10,18 @@
                 </div>
     <div class="modal-body">
     <div id="insertResult"></div>
-    <form id="uploadForm">
+    <!-- <form id="uploadForm"> -->
         
-    <div id="drop-area">
-    <h3>Drag and Drop Files Here<h3/>
-    <input type="file" title="Click to add Files">
-    </div>
+    <form action="upload.php"
+      class="dropzone"
+      id="my-awesome-dropzone"></form>
                 
     <div class="form-group">
         <textarea id="quoteText" id="quoteText" cols="30" rows="10" class="form-control mb-2"></textarea>
         <input type="text" class="form-control mb-2" id= "msg" placeholder="Message for Viewers">
         <input type="text" class="form-control" id="cats" placeholder="Quote Categories">
     </div>
-    </form>
+    <!-- </form> -->
     </div>
     <!-- TODO If their is no logged in user trying to upload media they should be shown button other than upload, but social login -->
                 <div class="modal-footer">
