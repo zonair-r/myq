@@ -1,0 +1,28 @@
+{
+    "name": "bs4",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "browser-sync": "^2.26.7",
+        "gulp-sass": "^4.0.2"
+    },
+    "dependencies": {
+        "bootstrap": "^4.3.1",
+        "gulp": "^4.0.2",
+        "is-valid-glob": "^1.0.0",
+        "jquery": "^3.4.1",
+        "popper.js": "^1.15.0",
+        "pumpify": "^1.5.1",
+        "remove-bom-stream": "^1.2.0",
+        "resolve-options": "^1.1.0",
+        "to-through": "^2.0.0",
+        "vinyl-sourcemap": "^1.1.0"
+    }
+}
