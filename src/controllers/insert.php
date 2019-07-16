@@ -20,15 +20,11 @@ if (isset($_POST['quoteText'])) {
     $msg = test_input($_POST["msg"]);
   
   $query ="INSERT INTO `quote_table`(`user_id`,`q_text`, `msg`) VALUES ('$user_id','$q_text','$msg')";
-  
-  
   if(mysqli_query($conn, $query)){
     echo "Quote Entered";
   } else {
     echo "Quote Not Entered" . $q_text . $msg;
   }
   }
-
-
 }
 ?>
