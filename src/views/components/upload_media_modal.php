@@ -20,6 +20,9 @@
         <textarea id="quoteText" id="quoteText" cols="30" rows="10" class="form-control mb-2"></textarea>
         <input type="text" class="form-control mb-2" id= "msg" placeholder="Message for Viewers">
         <input type="text" class="form-control" id="cats" placeholder="Quote Categories">
+     
+            <input class="typeahead" type="text" placeholder="Categories for Quotes">
+     
     </div>
     <!-- </form> -->
     </div>
