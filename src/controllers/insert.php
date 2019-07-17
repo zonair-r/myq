@@ -18,12 +18,13 @@ if (isset($_POST['quoteText'])) {
     $user_id = $_SESSION['id'];
     $q_text = test_input($_POST["quoteText"]);
     $msg = test_input($_POST["msg"]);
+    $fileNameToStore = test_input($_SESSION['fileNameToStore']);
   
-  $query ="INSERT INTO `quote_table`(`user_id`,`q_text`, `msg`) VALUES ('$user_id','$q_text','$msg')";
+  $query ="INSERT INTO `quote_table`(`user_id`,`image_path`,`q_text`, `msg`) VALUES ('$user_id','$fileNameToStore','$q_text','$msg')";
   if(mysqli_query($conn, $query)){
     echo "Quote Entered";
   } else {
-    echo "Quote Not Entered" . $q_text . $msg;
+    echo "Quote Not Entered" . $q_text . $msg . $fileNameToStore;
   }
   }
 }
