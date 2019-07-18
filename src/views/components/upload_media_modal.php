@@ -19,10 +19,7 @@
     <div class="form-group">
         <textarea id="quoteText" id="quoteText" cols="30" rows="10" class="form-control mb-2"></textarea>
         <input type="text" class="form-control mb-2" id= "msg" placeholder="Message for Viewers">
-        <input type="text" class="form-control" id="cats" placeholder="Quote Categories">
-     
-            <input class="typeahead" type="text" placeholder="Categories for Quotes">
-     
+        <input type="text" class="form-control" data-role="tags-input" id="tags-input" placeholder="Quote Categories">
     </div>
     <!-- </form> -->
     </div>

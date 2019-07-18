@@ -350,27 +350,38 @@
         if (!$.isArray(typeaheadjs)) {
             typeaheadjs = [null, typeaheadjs];
         }
+        //! new method  by Littlericket here
 
-        $.fn.typeahead.apply(self.$input, typeaheadjs).on('typeahead:selected', $.proxy(function (obj, datum, name) {
-          var index = 0;
-          typeaheadjs.some(function(dataset, _index) {
-            if (dataset.name === name) {
-              index = _index;
-              return true;
-            }
-            return false;
-          });
-
+        $.fn.typeahead.apply(self.$input, typeaheadjs).on('typeahead:selected', $.proxy(function (obj, datum) {
           // @TODO Dep: https://github.com/corejavascript/typeahead.js/issues/89
-          if (typeaheadjs[index].valueKey) {
-            self.add(datum[typeaheadjs[index].valueKey]);
-          } else {
-            self.add(datum);
-          }
-
+          self.add(datum);
+          
           self.$input.typeahead('val', '');
         }, self));
+
+        // //!old method is this one, REstored
+        // $.fn.typeahead.apply(self.$input, typeaheadjs).on('typeahead:selected', $.proxy(function (obj, datum, name) {
+        //   var index = 0;
+        //   typeaheadjs.some(function(dataset, _index) {
+        //     if (dataset.name === name) {
+        //       index = _index;
+        //       return true;
+        //     }
+        //     return false;
+        //   });
+
+        //   // @TODO Dep: https://github.com/corejavascript/typeahead.js/issues/89
+        //   if (typeaheadjs[index].valueKey) {
+        //     self.add(datum[typeaheadjs[index].valueKey]);
+        //   } else {
+        //     self.add(datum);
+        //   }
+
+        //   self.$input.typeahead('val', '');
+        // }, self));
+
       }
+
 
       self.$container.on('click', $.proxy(function(event) {
         if (! self.$element.attr('disabled')) {
