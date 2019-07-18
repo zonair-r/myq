@@ -12,12 +12,12 @@
     <div id="insertResult"></div>
     <!-- <form id="uploadForm"> -->
         
-    <form action="upload.php"
-      class="dropzone"
+    <form action="../../controllers/uploadMedia.php"
+      class="dropzone mb-2"
       id="my-awesome-dropzone"></form>
                 
     <div class="form-group">
-        <textarea id="quoteText" id="quoteText" cols="30" rows="10" class="form-control mb-2"></textarea>
+        <textarea id="quoteText" id="quoteText" cols="30" rows="8" class="form-control mb-2" placeholder="Quote Text here"></textarea>
         <input type="text" class="form-control mb-2" id= "msg" placeholder="Message for Viewers">
         <input type="text" class="form-control" data-role="tags-input" id="tags-input" placeholder="Quote Categories">
     </div>

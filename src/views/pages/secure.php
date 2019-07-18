@@ -19,11 +19,11 @@
 <script src="../../js/vendor/typeahead/bootstrap-tagsinput.js"></script>
 <script src="../../js/vendor/typeahead/bloodhound.js"></script>
 <script src="../../js/vendor/typeahead/typeahead.bundle.js"></script>
+<script src="../../js/vendor/dropzone/dropzone.js"></script>
 
 <script src="../../js/scripts/tags.js"></script>
 <script src="../../js/scripts/login.js"></script>
 <script src="../../js/scripts/uploadMedia.js"></script>
-<script src="../../js/vendor/dropzone/dropzone.js"></script>
 
 <!-- Script with preloaded categories to suggest tags -->
 

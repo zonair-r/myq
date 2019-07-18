@@ -4,7 +4,7 @@ function uploadForm(){
 console.log("Button Clicked");
 var quoteText = document.getElementById('quoteText').value;
 var msg = document.getElementById('msg').value;
-var cats = document.getElementById('cats').value;
+var cats = document.getElementById('tags-input').value;
 
 var params = "quoteText="+quoteText+"&"+"msg="+msg; 
 console.log(params);
