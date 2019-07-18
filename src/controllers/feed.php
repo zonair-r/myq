@@ -43,8 +43,8 @@ foreach($quoteArray as $value){
      <div class="card" id="<?php echo $row['q_id']; ?>">
             <img class="card-img" src="../../../storage/uploads/<?php echo $row['image_path'];?>" alt="Card image cap">
             <div class="card-img-overlay">
-                 <h5 class="card-title">Card title that wraps to a new line</h5>
-                <button class="rounded-circle" id = "<?php echo $row['user_id']; ?>"><i class="fas fa-user-plus text-primary"></i></button>
+                 <h5 class="card-title"></h5>
+                <button onclick="followUser(this.id)" class="rounded-circle" id = "<?php echo "userId_".$row['user_id']; ?>"><i class="fas fa-user-plus text-primary"></i></button>
     
             </div>
             <div class="card-body">
