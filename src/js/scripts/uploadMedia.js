@@ -6,12 +6,12 @@ var quoteText = document.getElementById('quoteText').value;
 var msg = document.getElementById('msg').value;
 var cats = document.getElementById('tags-input').value;
 
-var params = "quoteText="+quoteText+"&"+"msg="+msg; 
+var params = "quoteText="+quoteText+"&"+"msg="+msg+"&"+"cats=" + cats; 
 console.log(params);
 //+ "&"+"cats="+cats;
 
 var xhr = new XMLHttpRequest();
-xhr.open("POST", "../../controllers/insert.php", true);
+xhr.open("POST", "../../controllers/insertQuote.php", true);
 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 console.log(xhr.status);
         xhr.onload = function(){
