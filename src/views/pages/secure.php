@@ -5,7 +5,30 @@
 
 
 <?php
-	include('../components/card_results.php');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	//include('../components/card_results.php');
     include('../components/upload_media_modal.php'); 
     include('../components/login_modal.php');
     include('../components/notifications_modal.php');

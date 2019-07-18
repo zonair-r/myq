@@ -25,7 +25,7 @@ if (isset($_POST['quoteText'])) {
 
     $cats_array = explode(",", $cats);
 
-    print_r($cats_array);
+    //print_r($cats_array);
 
     echo "<br><br>";
     $catIdsArrays = [];
@@ -34,12 +34,12 @@ if (isset($_POST['quoteText'])) {
         $query = "select * from `cat_table` where `cat_name` like '%$value%'";
         $result = mysqli_query($conn, $query);
         $row = mysqli_fetch_assoc($result);
-        print_r($row);
-        echo "<br><br>";
-        //echo $row . "<br>";
+        // print_r($row);
+        // echo "<br><br>";
+        // echo $row . "<br>";
         array_push($catIdsArrays, $row['cat_id']);
     }
-    print_r($catIdsArrays);
+    //print_r($catIdsArrays);
 
   
   $query ="INSERT INTO `quote_table`(`user_id`,`image_path`,`q_text`, `msg`) VALUES ('$user_id','$fileNameToStore','$q_text','$msg')";
@@ -52,8 +52,8 @@ if (isset($_POST['quoteText'])) {
   
   foreach($catIdsArrays as $value){
     $query = "INSERT INTO `quote-categories`(`q_id`, `cat_id`) VALUES ('$last_id','$value')";
-    print_r($query);
-    echo "<br><br>";
+    //print_r($query);
+    //echo "<br><br>";
 
     if(mysqli_query($conn, $query)){
       echo "category Entered";
