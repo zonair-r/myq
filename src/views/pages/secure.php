@@ -1,34 +1,9 @@
 <?php session_start();?>
 <?php 
     include('../components/head.php');
-	include('../components/catMenuSecure.php'); ?>
-
-
-<?php
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	//include('../components/card_results.php');
+	include('../components/catMenuSecure.php'); 
+    
+	include('../../controllers/feed.php');
     include('../components/upload_media_modal.php'); 
     include('../components/login_modal.php');
     include('../components/notifications_modal.php');
