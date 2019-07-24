@@ -8,7 +8,7 @@ if(isset($_REQUEST['search'])){
 
     // print_r ($results);
 
-    $query = "SELECT * FROM `cat_table` WHERE `cat_name` like '%$search%'";
+    $query = "SELECT * FROM `general_cats` WHERE `cat_name` like '%$search%'";
 
 
     $result = mysqli_query ($conn, $query);

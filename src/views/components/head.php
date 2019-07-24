@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="../../css/dropzone.css">
     <link rel="stylesheet" href="../../css/bootstrap-tagsinput.css">
     <link rel="stylesheet" href="../../css/typeahead.css">
+    
     <title>MyQ</title>
     
     <!--  this is the styling done for the tags multi select auto complete input field  -->

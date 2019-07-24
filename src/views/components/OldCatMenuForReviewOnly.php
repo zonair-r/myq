@@ -9,7 +9,13 @@
 
   <div class="col-4">
     <div class=""><small class="text-muted mb-0">Favorites</small></div>
-      <button type="button" class="btn btn-outline-primary">Morning</button>
+      
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-outline-primary">Morning</button>
+        <button type="button" class="btn btn-outline-primary">
+          <i class="fas fa-plus-square text-primary"></i>
+        </button>
+      </div>
       <button type="button" class="btn btn-outline-secondary">Afternoon</button>
       <button type="button" class="btn btn-outline-success">wus up</button>
       <button type="button" class="btn btn-outline-danger">Hello</button>
@@ -55,21 +61,7 @@
     </div>
 </div>
 
-<div class="collapse" id="collapseFavorite">
-    <div class="row bg-light mx-3">
-    <div class="col-12">
-    <div class=""><small class="text-muted mb-0">Favorites</small></div>
-    <button type="button" class="btn btn-outline-primary">Deep Love</button>
-      <button type="button" class="btn btn-outline-secondary">Gf Luv</button>
-      <button type="button" class="btn btn-outline-success">Bf Luv</button>
-      <button type="button" class="btn btn-outline-danger">Partner</button>
-      <button type="button" class="btn btn-outline-warning">Workaholic</button>
-      <button type="button" class="btn btn-outline-info">Luv ma Ride</button>
-      <button type="button" class="btn btn-outline-dark">Hate My Manager</button>
-      <button type="button" class="btn btn-outline-dark">Luv Ya</button>
-    </div>
-    </div>
-</div>
+
 <div class="collapse" id="collapseTrending">
     <div class="row bg-light mx-3">
     <div class="col-12">

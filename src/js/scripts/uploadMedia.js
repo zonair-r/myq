@@ -1,25 +1,27 @@
-document.getElementById('uploadBtn').addEventListener('click', uploadForm);
+document.getElementById("uploadBtn").addEventListener("click", uploadForm);
 
-function uploadForm(){
-console.log("Button Clicked");
-var quoteText = document.getElementById('quoteText').value;
-var msg = document.getElementById('msg').value;
-var cats = document.getElementById('tags-input').value;
+function uploadForm() {
+  console.log("Button Clicked");
+  var quoteText = document.getElementById("quoteText").value;
+  var msg = document.getElementById("msg").value;
+  var cats = document.getElementById("tags-input").value;
 
-var params = "quoteText="+quoteText+"&"+"msg="+msg+"&"+"cats=" + cats; 
-console.log(params);
-//+ "&"+"cats="+cats;
+  var params =
+    "quoteText=" + quoteText + "&" + "msg=" + msg + "&" + "cats=" + cats;
+  console.log(params);
+  //+ "&"+"cats="+cats;
 
-var xhr = new XMLHttpRequest();
-xhr.open("POST", "../../controllers/insertQuote.php", true);
-xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-console.log(xhr.status);
-        xhr.onload = function(){
-            if (this.status = 200){
-            document.getElementById('insertResult').innerHTML = this.responseText;
-        } else {
-            document.getElementById('insertResult').innerHTML = "Please check your internet Connection";
-        }
-        }
-xhr.send(params);
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "../../controllers/insertQuote.php", true);
+  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  console.log(xhr.status);
+  xhr.onload = function() {
+    if ((this.status = 200)) {
+      document.getElementById("insertResult").innerHTML = this.responseText;
+    } else {
+      document.getElementById("insertResult").innerHTML =
+        "Please check your internet Connection";
+    }
+  };
+  xhr.send(params);
 }

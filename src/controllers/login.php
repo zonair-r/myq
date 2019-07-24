@@ -9,6 +9,7 @@ if (isset($_POST['email'])){
 
     $result = mysqli_query($conn, $query);
     $test = mysqli_fetch_array($result);
+    
     $rows = mysqli_num_rows($result);
 
     if ($rows >= 1){
