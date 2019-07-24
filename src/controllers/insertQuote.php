@@ -20,18 +20,20 @@ if (isset($_POST['quoteText'])) {
     $q_text = test_input($_POST["quoteText"]);
     $msg = test_input($_POST["msg"]);
     $cats = test_input($_POST["cats"]);
-    $fileNameToStore = test_input($_SESSION['fileNameToStore']);
-    //! Text To Image
 
-
-
+    if (isset($_SESSION['fileNameToStore'])) {
+      $fileNameToStore = test_input($_SESSION['fileNameToStore']);
+    } else {
+      //! all code for text to image will come here
+      include('textToImage.php');
+    }
     //*Exploding the cats received as a string into array entries and then checking them against the db categories table to find their id. And then using that id stored in an array. And then save your quote, after that using the quote last saved id save your quote cats in junction table.
 
     $cats_array = explode(",", $cats);
 
     //print_r($cats_array);
 
-    echo "<br><br>";
+    //echo "<br><br>";
     $catIdsArrays = [];
 
     foreach ($cats_array as $value) {
@@ -45,27 +47,22 @@ if (isset($_POST['quoteText'])) {
     }
     //print_r($catIdsArrays);
 
-
     $query = "INSERT INTO `quote_table`(`user_id`,`image_path`,`q_text`, `msg`) VALUES ('$user_id','$fileNameToStore','$q_text','$msg')";
+
+    // use the below echos if encountered problem in media entry to db in quote table and the quote_categoires table.
+
     if (mysqli_query($conn, $query)) {
-      echo "Quote Entered";
+      // echo "";
     } else {
-      echo "Quote Not Entered" . $q_text . $msg . $fileNameToStore;
+      //  echo "Quote Not Entered" . $q_text . $msg . $fileNameToStore;
     }
     $last_id = mysqli_insert_id($conn);
 
     foreach ($catIdsArrays as $value) {
-      $query = "INSERT INTO `quote-categories`(`q_id`, `cat_id`) VALUES ('$last_id','$value')";
-      //print_r($query);
-      //echo "<br><br>";
-
-      if (mysqli_query($conn, $query)) {
-        echo "category Entered";
-        echo "<br><br>";
-      } else {
-        echo "category Not Entered";
-        echo "<br><br>";
-      }
+      $query = "INSERT INTO `quote_categories`(`q_id`, `cat_id`) VALUES ('$last_id','$value')";
+      $result = mysqli_query($conn, $query);
     }
+    //* the success is sent at end of the queries for quote and its cats getting saved
+    echo "success";
   }
 }

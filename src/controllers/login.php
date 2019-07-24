@@ -20,9 +20,8 @@ if (isset($_POST['email'])){
         $_SESSION['email'] = $test['email']; 
         $_SESSION['password'] = $test['password']; 
         
-        echo "User Found Successfully, " . $_SESSION['fname'];
+        echo "success";
     } else {
-            echo "Login Invalid";
+            echo "failed";
     }
 }
-?>

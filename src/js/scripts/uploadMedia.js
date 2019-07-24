@@ -17,9 +17,19 @@ function uploadForm() {
   console.log(xhr.status);
   xhr.onload = function() {
     if ((this.status = 200)) {
-      document.getElementById("insertResult").innerHTML = this.responseText;
+      console.log(this.responseText);
+      if (this.responseText == "success") {
+        $("#uploadResultInfo").html("Quote Uploaded Successfully");
+
+        setTimeout(function() {
+          $("#uploadMediaModal").modal("hide");
+          location.reload();
+        }, 2000);
+      } else {
+        $("#uploadResultInfo").html(this.responseText);
+      }
     } else {
-      document.getElementById("insertResult").innerHTML =
+      document.getElementById("uploadResultInfo").innerHTML =
         "Please check your internet Connection";
     }
   };

@@ -9,9 +9,6 @@
                    </button>
                </div>
                <div class="modal-body">
-                   <div id="insertResult"></div>
-                   <!-- <form id="uploadForm"> -->
-
                    <form action="../../controllers/uploadMedia.php" class="dropzone mb-2" id="my-awesome-dropzone"></form>
 
                    <div class="form-group">
@@ -20,6 +17,7 @@
                        <input type="text" class="form-control" data-role="tags-input" id="tags-input" placeholder="Quote Categories">
                    </div>
                    </form>
+                   <p id="uploadResultInfo"></p>
                </div>
                <!-- TODO If their is no logged in user trying to upload media they should be shown button other than upload, but social login -->
                <div class="modal-footer">
