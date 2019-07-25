@@ -1,5 +1,7 @@
 <div class="card-columns px-5 my-2">
     <?php
+    $lastCatName = "";
+    $lastCatId = 0;
     if (isset($_SESSION['id'])) {
         //* this will run when the user is logged in and the session id has already been set.
         $user_id = $_SESSION['id'];
@@ -44,7 +46,7 @@
         $result = mysqli_query($conn, $query);
         while ($row = mysqli_fetch_assoc($result)) {
             $quoteID = $row['q_id'];
-            // //* brining the categories for the quote_id now in the loop to populate the field.
+            // //* 1...brining the categories for the quote_id now in the loop to populate the field.
             $queryCatName = "SELECT general_cats.cat_id, general_cats.cat_name FROM general_cats INNER JOIN quote_categories ON general_cats.cat_id = quote_categories.cat_id where quote_categories.q_id =$quoteID";
 
             $resultCats = mysqli_query($conn, $queryCatName);
@@ -54,27 +56,35 @@
                 //$lastCatID isnt used yet.
             }
 
-            //* check if the author of the current quote is already followed by the logged in user or not
-            $user_id = $_SESSION['id'];
-            $query = "Select * from `user_followers` where `user_id` = $user_id";
-            $followedUsersArray = mysqli_query($conn, $query);
-            // print_r($followedUsersArray);
-            $classIcon = "";
-            while ($followedUser = mysqli_fetch_assoc($followedUsersArray)) {
-                if ($row['user_id'] == $followedUser['following_user_id']) {
-                    // print_r("ID is followed");
-                    $classIcon = "fas fa-user-check text-danger";
-                    break;
-                } else {
-                    // print_r("ID is not followed");
-                    $classIcon = "fas fa-user-plus";
+            //* 2... check if the author of the current quote is already followed by the logged in user or not
+            if (isset($_SESSION['id'])) {
+                $user_id = $_SESSION['id'];
+                $query = "Select * from `user_followers` where `user_id` = $user_id";
+                $followedUsersArray = mysqli_query($conn, $query);
+                // print_r($followedUsersArray);
+                $classIcon = "";
+                while ($followedUser = mysqli_fetch_assoc($followedUsersArray)) {
+                    if ($row['user_id'] == $followedUser['following_user_id']) {
+                        // print_r("ID is followed");
+                        $classIcon = "fas fa-user-check text-danger";
+                        break;
+                    } else {
+                        // print_r("ID is not followed");
+                        $classIcon = "fas fa-user-plus";
+                    }
                 }
+            } else {
+                $classIcon = "fas fa-user-plus";
             }
-            //! User Saved Quotes Check, checking if the quote has already been saved in the board
-            $query = "SELECT user_cats.userCat_id, user_cats.name from user_cats INNER JOIN userCat_quotes ON user_cats.userCat_id=userCat_quotes.userCat_id WHERE userCat_quotes.user_id = '$user_id' AND userCat_quotes.quote_id= '$quoteID'";
-            $resultOfSavedQuotes = mysqli_query($conn, $query);
-            $rowCountOfSavedQuote = mysqli_num_rows($resultOfSavedQuotes);
-            $rowOfSavedQuote = mysqli_fetch_assoc($resultOfSavedQuotes);
+            //! 3... User Saved Quotes Check, checking if the quote has already been saved in the board
+            if (isset($_SESSION['id'])) {
+                $query = "SELECT user_cats.userCat_id, user_cats.name from user_cats INNER JOIN userCat_quotes ON user_cats.userCat_id=userCat_quotes.userCat_id WHERE userCat_quotes.user_id = '$user_id' AND userCat_quotes.quote_id= '$quoteID'";
+                $resultOfSavedQuotes = mysqli_query($conn, $query);
+                $rowCountOfSavedQuote = mysqli_num_rows($resultOfSavedQuotes);
+                $rowOfSavedQuote = mysqli_fetch_assoc($resultOfSavedQuotes);
+            } else {
+                $rowCountOfSavedQuote = 0;
+            }
 
             $quoteText = $row['q_text'];
             ?>
@@ -94,7 +104,8 @@
                         <div class="input-group mb-3" id="<?php echo "InputGroup_" . $row['q_id']; ?>">
                             <input type="text" class="form-control" placeholder="Category name" value="<?php echo $lastCatName; ?>" id="<?php echo "CatInputField_" . $row['q_id']; ?>">
                             <div class="input-group-append">
-                                <button class="btn btn-outline-primary" type="button" id="<?php echo 'InputBtn_' . $row['q_id']; ?>" onclick="saveToMyCat(this.id)">Save</button>
+                                <button class="btn btn-outline-primary" type="button" id="<?php echo 'InputBtn_' . $row['q_id']; ?>" onclick="saveToMyCat(this.id)">Save
+                                </button>
                             </div>
                         </div>
 
@@ -102,7 +113,6 @@
 
                     <div class="container d-flex justify-content-between mt-2">
                         <button onclick="followUser(this.id)" class="rounded-circle" id="<?php echo "userId_" . $row['user_id']; ?>"><i class=" <?php echo $classIcon; ?>"></i></button>
-
                         <a class="btn"><i class="fas fa-share text-primary"></i></a>
                         <a class="btn" href="../../../storage/uploads/<?php echo $row['image_path']; ?>" download><i class="fas fa-download text-primary"></i></a>
                         <button id="<?php echo "copyBtnId_" . $row['q_id']; ?>" class="copyBtn btn btn-outline-secondary" data-clipboard-text="<?php echo $row['q_text']; ?>" data-toggle="tooltip" title="Copied" onclick="showToolTip(this.id)">Copy

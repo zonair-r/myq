@@ -21,7 +21,7 @@ function submitForm(event) {
         document.getElementById("info").innerHTML = "Login Successful";
         setTimeout(function() {
           $("#loginModal").modal("hide");
-          location.reload();
+          window.location.href = "secure.php";
         }, 1000);
       } else {
         document.getElementById("info").innerHTML =

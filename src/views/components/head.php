@@ -101,9 +101,18 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active px-2">
-                    <a class="nav-link" data-toggle="modal" data-target="#uploadMediaModal">
-                        <i class="fas fa-plus-circle text-primary fa-2x"></i></a></li>
-
+                    <a class="nav-link" data-toggle="modal" data-target="#uploadMediaModal"> <i class="fas fa-plus-circle text-primary fa-2x"></i></a>
+                </li>
+                <?php if (isset($_SESSION['id'])) {
+                    $fname = $_SESSION['fname'];
+                    $lname = $_SESSION['lname'];
+                    ?>
+                    <li class="nav-item active px-2">
+                        <strong class="d-block pt-3">
+                            <?php echo $fname . " " . $lname; ?>
+                        </strong>
+                    </li>
+                <?php  } ?>
                 <li class="nav-item active px-2">
                     <a class="nav-link" data-toggle="modal" data-target="#loginModal">
                         <i class="fas fa-user-circle text-primary fa-2x"></i>

@@ -2,6 +2,7 @@
    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="userModal" aria-hidden="true">
        <div class="modal-dialog" role="document">
            <?php if (!isset($_SESSION['id'])) { ?>
+               <!-- Logged Out User Sign In and Sign Up options -->
                <div class="modal-content">
                    <div class="modal-header">
                        <h5 class="modal-title" id="exampleModalLabel">Login</h5>
@@ -14,6 +15,7 @@
                            <div class="form-group">
                                <input type="email" class="form-control mb-2" placeholder="Email" id="femail">
                                <input type="text" class="form-control mb-2" placeholder="Password" id="fpassword">
+                               <p class="h6">New User! <a href="#">Click here to sign up</a></p>
                                <p id="info"></p>
                            </div>
                        </form>

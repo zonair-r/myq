@@ -1,9 +1,14 @@
-<?php session_start(); ?>
+<?php session_start();
+//* only logged in user can view the secure.php page
+if (!isset($_SESSION['id'])) {
+    header('Location: index.php');
+}
+?>
 <?php
 include('../components/head.php');
 include('../../controllers/catMenuController.php');
 
-include('../../controllers/feed.php');
+include('../../controllers/secureFeed.php');
 include('../components/upload_media_modal.php');
 include('../components/login_modal.php');
 include('../components/notifications_modal.php');
@@ -24,7 +29,6 @@ include('../components/notifications_modal.php');
 <script src="../../js/scripts/logout.js"></script>
 <script src="../../js/scripts/login.js"></script>
 <script src="../../js/scripts/uploadMedia.js"></script>
-
 
 <!-- Script with preloaded categories to suggest tags -->
 <!-- //*To toggle other users following by the logged in user -->
@@ -149,16 +153,6 @@ include('../components/notifications_modal.php');
         }, 3000);
     }
 </script>
-
-<!-- Next Script here -->
-<script>
-
-
-
-
-</script>
-
-
 </body>
 
 </html>

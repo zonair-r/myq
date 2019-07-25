@@ -1,4 +1,7 @@
-document.getElementById("uploadBtn").addEventListener("click", uploadForm);
+var fetchUploadBtn = document.getElementById("uploadBtn");
+if (fetchUploadBtn) {
+  fetchUploadBtn.addEventListener("click", uploadForm);
+}
 
 function uploadForm() {
   console.log("Button Clicked");
