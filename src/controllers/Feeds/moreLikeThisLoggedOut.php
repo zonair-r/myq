@@ -1,14 +1,20 @@
 <?php
-$query = "SELECT quote_table.q_id, quote_table.user_id,quote_table.image_path,quote_table.q_text,general_cats.cat_id,general_cats.cat_name FROM quote_table INNER JOIN quote_categories ON quote_table.q_id = quote_categories.q_id INNER JOIN general_cats ON quote_categories.cat_id = general_cats.cat_id";
+//* First we extract all the topics for the quote currently displayed on this page
 
+$query = "SELECT * from quote_categories where q_id = $quoteID";
 $result = mysqli_query($conn, $query);
-?>
+// //*Extract Quote (thru Quote IDS) for the all cats extracted from the above query
+while ($row = mysqli_fetch_assoc($result)) {
+    $catID = $row['cat_id'];
+    $query = "SELECT quote_table.q_id, quote_table.user_id, quote_table.image_path,quote_table.q_text FROM quote_table INNER JOIN quote_categories WHERE quote_categories.cat_id = $catID";
+    $result = mysqli_query($conn, $query);
+} ?>
 
 <!-- //*Card Mark Up -->
 <div class="card-columns px-5 my-2">
     <?php while ($row = mysqli_fetch_assoc($result)) { ?>
         <div class="card" id="<?php echo $row['q_id']; ?>">
-            <a href="<?php echo 'quoteLoggedOut.php?quote=' . $row['q_id'] ?>">
+            <a href="<?php echo 'quote.php?quote=' . $row['q_id'] ?>">
                 <img class="card-img" src="<?php echo '../../../storage/uploads/' . $row['image_path'] ?>" alt="<?php echo $row['q_text'] ?>">
             </a>
             <div class="card-body">

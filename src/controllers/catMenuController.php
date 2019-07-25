@@ -1,6 +1,6 @@
-<div class="row bg-light mx-3 mb-2">
+<div class="row bg-light mx-3 mb-2 ">
     <!-- //* User Personal Boards Saving his uploads and saves -->
-    <div class="col-4">
+    <div class="col-xs-12 col-md-4 d-none d-md-block">
         <div class=""><small class="text-muted mb-0">Boards</small></div>
         <!-- //TODO set this up for my boards, code is currently for followed topics, we need to change it to users own boards. Such that it joins the user_cats and the userCat_quotes to get quote Ids and Cat Names.boards -->
         <?php
@@ -23,7 +23,7 @@
     </div>
 
     <!-- //* This is the start of the Favortie Cats -->
-    <div class="col-4">
+    <div class="col-xs-12 col-md-4 d-none d-md-block">
         <div class=""><small class="text-muted mb-0">Followed Topics</small></div>
 
         <?php
@@ -47,7 +47,7 @@
 
 
     <!-- //*This is the start of the All trending Cats -->
-    <div class="col-4">
+    <div class="col-xs-12 col-md-4 d-none d-md-block">
         <div class=""><small class="text-muted mb-0">Trending</small></div>
         <?php
 

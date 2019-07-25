@@ -1,6 +1,6 @@
 <?php
 include('../components/head.php');
-include('../components/catMenuUnsecure.php');
+//include('../components/catMenuUnsecure.php');
 
 include('../../controllers/Feeds/loggedOutFeed.php');
 include('../components/upload_media_modal.php');

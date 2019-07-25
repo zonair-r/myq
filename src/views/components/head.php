@@ -85,8 +85,21 @@
 </head>
 
 <body>
+
+    <?php
+    $fname = "";
+    $lname = "";
+    $homeRoute = "";
+
+    if (isset($_SESSION['id'])) {
+        $homeRoute = "secure.php";
+        $fname = $_SESSION['fname'];
+        $lname = $_SESSION['lname'];
+    } else {
+        $homeRoute = "index.php";
+    } ?>
     <nav class="navbar navbar-expand-sm navbar-light bg-light sticky-top pt-2 my-0">
-        <a class="navbar-brand" href="index.php">LOGO</a>
+        <a class="navbar-brand" href="<?php echo $homeRoute; ?>">LOGO</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -103,16 +116,11 @@
                 <li class="nav-item active px-2">
                     <a class="nav-link" data-toggle="modal" data-target="#uploadMediaModal"> <i class="fas fa-plus-circle text-primary fa-2x"></i></a>
                 </li>
-                <?php if (isset($_SESSION['id'])) {
-                    $fname = $_SESSION['fname'];
-                    $lname = $_SESSION['lname'];
-                    ?>
-                    <li class="nav-item active px-2">
-                        <strong class="d-block pt-3">
-                            <?php echo $fname . " " . $lname; ?>
-                        </strong>
-                    </li>
-                <?php  } ?>
+                <li class="nav-item active px-2">
+                    <strong class="d-block pt-3">
+                        <?php echo $fname . " " . $lname; ?>
+                    </strong>
+                </li>
                 <li class="nav-item active px-2">
                     <a class="nav-link" data-toggle="modal" data-target="#loginModal">
                         <i class="fas fa-user-circle text-primary fa-2x"></i>
